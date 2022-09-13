@@ -13,3 +13,5 @@ def your_1st_function():
     return ...
 
 ```
+def hello_world():
+    print("Hello World")
