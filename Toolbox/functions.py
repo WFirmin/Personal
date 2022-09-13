@@ -1,3 +1,6 @@
 
 def hello_world():
   print("Hello World!")
+
+def array_test(v):
+  return np.array(v)
