@@ -9,7 +9,7 @@ setup(
     This name will be used when people try to do pip install. And it is CASE SENSITIVE. 
     You should create an unique name. Search on pypi.org to see if the name is taken or not.
     '''
-    name = 'YourPackageName', 
+    name = 'WFirmin', 
     
     '''
     The version number of your package consists of three integers "Major.Minor.Patch".
@@ -22,12 +22,12 @@ setup(
     '''
     This is the short description will show on the top of the webpage of your package on pypi.org
     '''
-    description = 'An NLP python package for computing Boilerplate score and many other text features.',
+    description = 'A package created for personal use by Will Firmin.',
     
     '''
     This is the name of your main module file. No need to include the .py at the end.
     '''    
-    py_modules = ["TheModuleName"],
+    py_modules = ["MainModule"],
     
     '''
     Leave it as default. It shows where the module is stored.
@@ -45,8 +45,8 @@ setup(
     '''
     Change the author name(s) and email(s) here.
     '''
-    author = 'AuthorName',
-    author_email = 'xyz123@something.com',
+    author = 'William Firmin',
+    author_email = 'N/A',
     
     '''
     Leave the following as default. It will show the readme and changelog on the main page of your package.
@@ -57,7 +57,7 @@ setup(
     '''
     The url to where your package is stored for public view. Normally, it will be the github url to the repository you just forked.
     '''
-    url='https://github.com/jinhangjiang/morethansentiments',
+    url='https://github.com/WFirmin/Your-First-Python-Package-on-PyPI',
     
     '''
     Leave it as deafult.
@@ -97,7 +97,8 @@ setup(
     If you specify all the dependencies here, you do not need to write a requirements.txt separately like many others do.
     '''
     install_requires = [
-
+        
+        "numpy",
         'pandas ~= 1.2.4',
         ...
 
@@ -108,6 +109,6 @@ setup(
     '''
     The keywords of your package. It will help users to find your package on pypi.org
     '''
-    keywords = ['Text Mining', 'Data Science', ...],
+    keywords = ['WFirmin'],
     
 )
