@@ -14,5 +14,5 @@ setuptools.setup(
     url='https://github.com/WFirmin/Personal',
     license='MIT',
     packages=['Toolbox'],
-    install_requires=[],
+    install_requires=["numpy","pandas"],
 )
