@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='WFirmin',
-    version='0.0.8',
+    version='0.0.9',
     author='Will Firmin',
     author_email='will.firmin@hotmail.com',
     description='Testing installation of Package',
