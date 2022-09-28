@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
+from scipy.stats import norm
+import random
 
 # Misc. Tools:
 
@@ -72,15 +74,38 @@ class Model:
     else:
       return self.formula(betas, data)
   
-  def fit(self, data, loss=MSE, warm_start=False, print_results=False):
-    # loss(true, pred) is the loss function to minimize
-    # define the function to optimize
-    optimization_function = lambda b: loss(data[self.dependent], self.predict(data, b))
-    # optimize
-    if warm_start: 
-      res = minimize(optimization_function, x0=self.betas)
+  def fit(self, data, loss=MSE, warm_start=False, print_results=False, bootstrap=0):
+    if bootstrap == 0:
+      # loss(true, pred) is the loss function to minimize
+      # define the function to optimize
+      optimization_function = lambda b: loss(data[self.dependent], self.predict(data, b))
+      # optimize
+      if warm_start: 
+        res = minimize(optimization_function, x0=self.betas)
+      else: 
+        res = minimize(optimization_function, x0=[0]*self.n_betas)
+      if print_results: print(res)
+      self.betas = res.x
+
     else: 
-      res = minimize(optimization_function, x0=[0]*self.n_betas)
-    if print_results: print(res)
-    self.betas = res.x
-    
+      betas = []
+      for i in range(bootstrap):
+        dataBootstrap = data.loc[random.choices(data.index, k=len(data))]
+        # loss(true, pred) is the loss function to minimize
+        # define the function to optimize
+        optimization_function = lambda b: loss(dataBootstrap[self.dependent], self.predict(dataBootstrap, b))
+        # optimize
+        res = minimize(optimization_function, x0=[0]*self.n_betas)
+        betas.append(res.x)
+      # DataFrame of results: each row is a sample, each column is a parameter
+      betas = pd.DataFrame(betas)
+      self.betas = np.array(betas.mean())
+      self.stdError = np.array(betas.std())
+      self.pValue = norm.sf(abs(self.betas) / self.stdError)*2
+      significance = {0.1:".", 0.05:"*", 0.01:"**",0.001:"***"}
+      self.sig = pd.Series([""]*self.n_betas)
+      for level in significance.keys():
+        self.sig[self.pValue <= level] = significance[level]
+      self.summary = pd.DataFrame([self.betas, self.stdError, self.pValue, self.sig],
+        index=["Coefficient","Std Error","p-value","Significance"]).T
+      if print_results: print(self.summary)
