@@ -1,5 +1,9 @@
 # Will Firmin's Personal Toolbox
 
+## Installation:
+Run the below command in CMD:
+pip install git+https://github.com/WFirmin/Personal.git
+
 ## Toolbox
 Contains main tools:
 - cut(): creates quantile labels for data based on several different methods
