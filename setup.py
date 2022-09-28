@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='WFirmin',
-    version='0.0.10',
+    version='0.0.11',
     author='Will Firmin',
     author_email='will.firmin@hotmail.com',
     description='Personal Toolbox',
