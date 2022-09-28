@@ -1,8 +1,11 @@
 # Will Firmin's Personal Toolbox
 
-## Installation:
-Run the below command in CMD:
+## Setup:
+Install via the below command in CMD:
 <br>pip install git+https://github.com/WFirmin/Personal.git
+
+Import:
+<br>import WFirmin.Toolbox as wf
 
 ## Toolbox
 Contains main tools:
