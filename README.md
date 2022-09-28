@@ -2,7 +2,7 @@
 
 ## Installation:
 Run the below command in CMD:
-pip install git+https://github.com/WFirmin/Personal.git
+<br>pip install git+https://github.com/WFirmin/Personal.git
 
 ## Toolbox
 Contains main tools:
