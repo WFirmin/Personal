@@ -15,3 +15,13 @@ Contains main tools:
 ## Visuals
 Tools for visualizing data
 - gradient(): creates a gradient between two given colors
+
+## Features in progress:
+### Modeling Framework:
+- Elastic Net regularization (complete, to be committed)
+- Standardization (complete, to be committed)
+- Cross validation (complete, to be committed)
+- Feature selection
+- Log loss function
+- Sampling within data
+
