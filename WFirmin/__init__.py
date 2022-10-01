@@ -6,6 +6,8 @@ from WFirmin.Toolbox import concatList
 from WFirmin.Toolbox import Resample
 from WFirmin.Toolbox import elasticNet
 from WFirmin.Toolbox import Model
+from WFirmin.Toolbox import meanStd
+from WFirmin.Toolbox import coefSig
 
 from WFirmin import Visuals
 from WFirmin.Visuals import gradient
