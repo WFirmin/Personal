@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='WFirmin',
-    version='0.0.13',
+    version='0.0.14',
     author='Will Firmin',
     author_email='will.firmin@hotmail.com',
     description='Personal Toolbox',
@@ -14,5 +14,5 @@ setuptools.setup(
     url='https://github.com/WFirmin/Personal',
     license='MIT',
     packages=['WFirmin'],
-    install_requires=["numpy","pandas","scipy"],
+    install_requires=["numpy","pandas","scipy","seaborn"],
 )
