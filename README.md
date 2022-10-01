@@ -7,7 +7,9 @@ pip install git+https://github.com/WFirmin/Personal.git
 ```
 
 Import:
-<br>import WFirmin.Toolbox as wf
+```python
+import WFirmin.Toolbox as wf
+```
 
 ## Toolbox
 Contains main tools:
@@ -35,28 +37,34 @@ import pandas as pd
 import WFirmin.Toolbox as wf
 
 # Create the data:
-x1 = np.random.normal(1000)
-x2 = np.random.normal(1000)
-y = logit(3 - 2*x1 + np.random.normal(scale=0.05, 1000)) * logit(-2 + 5*x2 + np.random.normal(scale=0.05, 1000))
+x1 = np.random.normal(size=1000)
+x2 = np.random.normal(size=1000)
+y = wf.logit(3 - 2*x1 + np.random.normal(scale=0.05, size=1000)) * wf.logit(-2 + 5*x2 + np.random.normal(scale=0.05, size=1000))
 data = pd.DataFrame({"Y":y,"X1":x1,"X2":x2})
 
 # Specify the model:
-formula = lambda b,v: logit(b[0] + b[1]*v["X1"]) * logit(b[2] + b[3]*v["X2"])
-reg = Model(dependent="Y", formula=formula, n_betas=4)
+# The formula uses arrays, where b specifies coefficients and v specifies variables, as per their name in the data.
+formula = lambda b,v: wf.logit(b[0] + b[1]*v["X1"]) * wf.logit(b[2] + b[3]*v["X2"])
+reg = wf.Model(dependent="Y", formula=formula, n_betas=4)
 
 # Fit the model:
-reg.fit(data)
-
+reg.fit(data, resample="CV", K=5, print_results=True)
+```
+Output:
+```
+Score: 3.179862130366884e-05
+95% CI: [2.658395032143908e-05, 3.70132922858986e-05]
+    Coefficient  Std Error       P-Value Significance
+b0     2.982256   0.002079  1.415818e-12          ***
+b1    -1.996660   0.002696  1.994493e-11          ***
+b2    -2.003128   0.000518  2.676821e-14          ***
+b3     5.005381   0.002472  3.570912e-13          ***
 ```
 
 
 
 ## Features in progress:
 ### Modeling Framework:
-- Elastic Net regularization (complete, to be committed)
-- Standardization (complete, to be committed)
-- Cross validation (complete, to be committed)
 - Feature selection
 - Log loss function
-- Sampling within data
 
