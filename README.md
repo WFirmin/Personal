@@ -14,6 +14,13 @@ import WFirmin.Toolbox as wf
 ## Toolbox
 Contains main tools:
 - cut(): creates quantile labels for data based on several different methods
+- concatList(): concatenates a list of lists
+- Resample(): returns a list of indices corresponding to a resampling method: cross validation or bootstrapping
+- meanStd(): returns a tuple of an array's mean and the estimated standard deviation of the mean
+- logit(): applies the logit function to an array
+- MSE(): returns the mean squared error, given arrays of the true and predicted values
+- elasticNet(): modifies a loss function to apply elastic net regularization
+- coefSig(): given coefficients from a number of trials, this function returns the average of each coefficient and a DataFrame that displays information about each coefficient
 - Model: framework for building custom parametric machine learning models.  Focuses on compounding simpler, interpretable models for insightful use.
 
 ## Visuals
