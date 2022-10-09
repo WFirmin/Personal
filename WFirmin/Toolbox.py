@@ -85,7 +85,7 @@ def MSE(true, pred, *args):
 def LogLoss(true, prob, *args):
   true = np.array(true)
   prob = np.array(prob)
-  return -(true*np.log(prob) + (1-true)*np.log(1-prob)).sum()
+  return -(true*np.log(prob) + (1-true)*np.log(1-prob)).mean()
 
 def elasticNet(loss, alpha, lam, betas):
   # Loss is original loss function returns, alpha is portion LASSO, lambda is multiplier (hypertune)
