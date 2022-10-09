@@ -45,7 +45,7 @@ import pandas as pd
 import WFirmin.Toolbox as wf
 
 # Create the data:
-n = 1000
+n = 10000
 x1 = np.random.normal(size=n, scale=2)
 x2 = np.random.normal(size=n, scale=2)
 y = wf.logit(3 - 2*x1) * wf.logit(-2 + 5*x2)
@@ -58,17 +58,17 @@ formula = lambda b,v: wf.logit(b[0] + b[1]*v["X1"]) * wf.logit(b[2] + b[3]*v["X2
 reg = wf.Model(dependent="Y", formula=formula, n_betas=4)
 
 # Fit the model:
-reg.fit(data, loss=wf.LogLoss, resample="CV", K=5, print_results=True)
+reg.fit(data, loss=wf.LogLoss, resample="CV", K=3, print_results=True)
 ```
 Output:
 ```
-Score: 36.59334780531542
-95% CI: [25.67030843319563, 47.516387177435206]
-    Coefficient  Std Error       P-Value Significance
-b0     3.108472   0.100140  6.417994e-06          ***
-b1    -1.979923   0.056781  4.036414e-06          ***
-b2    -2.020548   0.035849  5.933043e-07          ***
-b3     4.916244   0.091065  7.047503e-07          ***
+Score: 0.1802721797591775
+95% CI: [0.15625091694427176, 0.20429344257408324]
+    Coefficient  Std Error   P-Value Significance
+b0     3.113760   0.128042  0.001687           **
+b1    -2.025705   0.063896  0.000993          ***
+b2    -2.109533   0.027244  0.000167          ***
+b3     5.274653   0.138666  0.000690          ***
 ```
 
 
