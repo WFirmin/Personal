@@ -32,7 +32,7 @@ Tools for visualizing data
 #### Decomposing a probability into two events:
 Suppose we observe Y and want to model it as a decomposition into two events:
 
-$P(Y)=P(A)P(B)$
+$P(Y)=P(A)P(B|A)$
 
 This modeling framework allows specification of the model
 
@@ -54,6 +54,7 @@ y = (r <= y).astype(int)
 data = pd.DataFrame({"Y":y,"X1":x1,"X2":x2})
 
 # Specify the model:
+# Use v for variables in the data, b for coefficients
 formula = lambda b,v: wf.logit(b[0] + b[1]*v["X1"]) * wf.logit(b[2] + b[3]*v["X2"])
 reg = wf.Model(dependent="Y", formula=formula, n_betas=4)
 
